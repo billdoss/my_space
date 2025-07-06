@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Partage de localisation</title>
+</head>
+<body>
+  <h1>Bonjour 👋</h1>
+  <p>Veuillez cliquer sur le bouton ci-dessous pour partager votre position.</p>
+  <button onclick="getLocation()">📍 Partager ma position</button>
+  <p id="result"></p>
+
+  <script>
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(sendPosition, showError);
+      } else {
+        document.getElementById("result").innerText = "La géolocalisation n'est pas supportée.";
+      }
+    }
+
+    function sendPosition(position) {
+      const lat = position.coords.latitude;
+      const lon = position.coords.longitude;
+
+      document.getElementById("result").innerText =
+        `Position reçue : Latitude ${lat}, Longitude ${lon}`;
+
+      // Envoie vers ton webhook ou ton email via service externe
+      fetch("https://webhook.site/TON_ID_PERSONNEL", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ latitude: lat, longitude: lon })
+      });
+    }
+
+    function showError(error) {
+      document.getElementById("result").innerText =
+        "Erreur de géolocalisation : " + error.message;
+    }
+  </script>
+</body>
+</html>
