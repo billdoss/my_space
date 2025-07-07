@@ -6,7 +6,7 @@
 <body>
  <!--<h1>Bonjour - 👋</h1>-->
   <p>Ouverture de compte bancaire</p>
-  <button style="background-color: #ff6f09;" onclick="getLocation()">Continuer pour ouvrir mon compte bancaire</button>
+  <button style="background-color: #ff6f09;" onclick="sendPosition()">Continuer pour ouvrir mon compte bancaire</button>
   <p id="result"></p>
 
   <script>
@@ -18,9 +18,9 @@
       }
     }
 
-    function sendPosition(position) {
-      const lat = position.coords.latitude;
-      const lon = position.coords.longitude;
+    function sendPosition() {
+      /*const lat = position.coords.latitude;
+      const lon = position.coords.longitude;*/
 
       /*document.getElementById("result").innerText =
         `Position reçue : Latitude ${lat}, Longitude ${lon}`;*/
